@@ -41,7 +41,7 @@ After the completed node's installation, you will need to clone this current rep
 In this project I am using Yarn as the project package manager. So, once you have npm/node installed, you can do:
 
 > ```bash
->  npm install --global yarn.
+>  npm install --global yarn
 > ```
 
 After that, you can check yarn was correctly installed by running
@@ -100,16 +100,16 @@ We can create many personalized ways to run cypress. To do this, we need to crea
 > yarn cy:run
 >
 > # Starting the tests via CLI in headless mode with the Chrome browser:
-> cy:run:chrome
+> yarn cy:run:chrome
 >
 > # Starting the tests via CLI in headless mode with the Firefox browser:
-> cy:run:firefox
+> yarn cy:run:firefox
 >
 > # Starting the tests via CLI in headless mode with the Edge browser:
-> cy:run:edge
+> yarn cy:run:edge
 > ```
 
-Remember that all theses commands above can be totally adapted, modified, or even created according to the project current necessities
+Remember that all those commands above can be totally adapted, modified, or even created according to the project current necessities
 
 ---
 
@@ -131,7 +131,7 @@ yarn lint:fix
 # If no issues were found, you can move forward to commit your code.
 ```
 
-I added Husky in this project, so if you activate it in your local repository, you will not need to be worried about running the compilers before the commits because husky does it automatically for you.
+I added Husky in this project. If you activate it in your local repository, you will not need to be worried about running the compilers before the commits because husky does it automatically for you.
 
 To do that, open a git bash terminal in your Cypress project root and type the following commands:
 
@@ -145,6 +145,22 @@ The compilers will run whenever you commit your code in both VSCode UI and Git B
 The usage of Husky is not mandatory but it is very helpful since you don’t need to type/remember the compiler and linters commands
 
 > **_NOTE:_** Do never commit your code before running the compilers using scripts provided in this page. They are meant to prevent several issues we may find in our CI environment, so it is a good practice to always run the compilers before pushing code. Whether you forget to run the scripts or don’t want to use husky, you will get an error in the pipeline if any issue is found anyway. Hence, there is no way to skip the compilers verification.
+
+---
+
+<br>
+
+## Node packages updates
+
+We know that some Cypress plugins and other node packages can be updated along the time. New versions usually includes new features, bug fixes, and, most important, security enhancements.
+
+So, it is recommended to keep an eye on the node packages (Once a month looks good).
+
+To do that you can perform the following command:
+
+> ```bash
+> yarn outdated # It will show you the list of outdated packages
+> ```
 
 ---
 
