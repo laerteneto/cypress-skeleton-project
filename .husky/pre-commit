@@ -1,0 +1,15 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+GREEN='\033[0;32m' # Green
+NC='\033[0m' # No Color
+
+echo -e "${GREEN}################### Starting pre commit tests - Running linters and compilers ###################\n${NC}"
+
+echo -e "${GREEN}Running yarn compile${NC}"
+yarn compile 
+
+echo -e "\n${GREEN}Running yarn lint:fix${NC}"
+yarn lint:fix
+
+echo -e "\n${GREEN}################### Pre commit tests done ################### ${NC}\n"

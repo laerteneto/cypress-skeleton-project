@@ -1,0 +1,86 @@
+image: cypress/browsers:node16.13.2-chrome100-ff98
+options:
+  max-time: 120
+
+definitions:
+  caches:
+    npm: $HOME/.npm
+    cypress: $HOME/.cache/Cypress
+
+cypressChrome: &cypressChrome
+  name: E2E tests on Chrome
+  caches:
+    - npm
+    - node
+    - cypress
+  script:
+    - yarn cy:run:dashboard --browser chrome --parallel --group Chrome --ci-build-id $BITBUCKET_BUILD_NUMBER
+  artifacts:
+    - cypress/screenshots/**
+    - cypress/videos/**
+    - cypress/downloads/**
+    - cypress/test-results/**
+
+cypressFirefox: &cypressFirefox
+  name: E2E tests on Firefox
+  caches:
+    - npm
+    - node
+    - cypress
+  script:
+    - yarn cy:run:dashboard --browser firefox --parallel --group Firefox --ci-build-id $BITBUCKET_BUILD_NUMBER
+  artifacts:
+    - cypress/screenshots/**
+    - cypress/videos/**
+    - cypress/downloads/**
+    - cypress/test-results/**
+
+pipelines:
+  default:
+    - step:
+        name: Install dependencies and compile
+        caches:
+          - npm
+          - cypress
+          - node
+        script:
+          - yarn
+          - yarn compile
+          - yarn lint:fix
+          - yarn cy:list:spec:by:names
+          - yarn cy:list:spec:by:tags
+    - step:
+        name: Cypress - Chrome browser
+        caches:
+          - npm
+          - cypress
+          - node
+        script:
+          - yarn cy:run:chrome
+        artifacts:
+          - cypress/screenshots/**
+          - cypress/videos/**
+          - cypress/test-results/**
+          - cypress/downloads/**
+
+  branches:
+    cypressDashboard:
+      - step:
+          name: Install dependencies
+          caches:
+            - npm
+            - cypress
+            - node
+          script:
+            - yarn
+            - yarn compile
+            - yarn lint:fix
+            - yarn cy:list:spec:by:names
+            - yarn cy:list:spec:by:tags
+      - parallel:
+          - step:
+              <<: *cypressChrome
+          - step:
+              <<: *cypressChrome
+          - step:
+              <<: *cypressChrome

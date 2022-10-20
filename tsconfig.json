@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es2015",
+    "outDir": "./dist",
+    "types": ["cypress", "cypress-grep"],
+    "allowJs": true,
+    "checkJs": true,
+    "strict": true,
+    "alwaysStrict": true,
+    "noImplicitAny": false,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "pretty": true,
+    "strictNullChecks": true,
+    "sourceMap": false,
+    "skipLibCheck": true,
+    "lib": ["ESNext.String", "es7", "es2021"]
+  },
+  "include": ["./cypress", "cypress-real-events"],
+  "exclude": ["node_modules"]
+}
