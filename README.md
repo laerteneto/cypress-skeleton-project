@@ -1,6 +1,6 @@
 [![Cypress.io](https://img.shields.io/badge/tested%20with-Cypress-04C38E.svg)](https://www.cypress.io/)
 
-# Cypress base project
+# Cypress skeleton project
 
 This repository contains a skeleton base project for Cypress. It includes PO Singleton setup, linters, and reporting.
 
@@ -11,7 +11,7 @@ This repository contains a skeleton base project for Cypress. It includes PO Sin
 
 If you are gonna use VsCode, I also suggest you to use the following extensions to help during development:
 
-- ESLint (from Dirk Baeumer)
+- ESLint (from Microsoft)
 - Prettier (from Prettier)
 - vscode-icons (from VSCode Icons Team)
 - Cypress Helper (from Oleksandr Shevtsov)
@@ -95,9 +95,6 @@ You can create personalized commands to run cypress. In order to do it, you need
 > # Runs all the UI tests:
 > yarn cy:run:ui
 >
-> #  Runs all the API tests:
-> yarn cy:run:api
->
 > ```
 
 Remember that all those commands above can be totally adapted, modified, or even created according to the project current necessities.
@@ -106,7 +103,6 @@ At this point, the commands above will run in the default electron browser (the 
 
 ---
 
-<br>
 
 ## Project code quality and standards
 
@@ -180,7 +176,3 @@ A JUnit report is also generated as a xml file in <strong>cypress/JUnitReport.xm
 
 This project is set to run in a Bitbucket pipeline. All PRs that goes into the master branch trigger the CI to run all the test cases automatically.
 You can take a look in the <strong>bitbucket-pipelines.yml</strong> file for more details about the implementation.
-
----
-
-<br>
