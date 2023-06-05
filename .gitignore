@@ -1,28 +1,28 @@
-# Node modules and configs
-node_modules
+# Dependency directories
+node_modules/
 
-# Cypress local files:
-cypress/screenshots/*
+# Optional npm cache directory
+.npm
+
+# Cypress data
+cypress/downloads/
+cypress/screenshots/
+cypress/videos
 cypress/test-results/
 test-results.xml
-results
-videos
-downloads
 
-# Vs code or other IDE generated config files:
-.vs
-.vscode
+# VSCode
+vscode/*
+.vscode/*
 
-# Yarn files
-yarn-error.log
-
-# Compiler report files
-dist
+# Runtime data and misc
+.DS_Store
+.idea/
 
 #Debug erros and logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# MAC files
-**/.DS_Store
+# Compiler report files
+dist

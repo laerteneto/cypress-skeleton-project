@@ -10,6 +10,7 @@
   },
   "rules": {
     "cypress/no-unnecessary-waiting": "error",
+    "cypress/unsafe-to-chain-command": 0,
     "constructor-super": "error",
     "for-direction": "error",
     "getter-return": "error",

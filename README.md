@@ -103,7 +103,6 @@ At this point, the commands above will run in the default electron browser (the 
 
 ---
 
-
 ## Project code quality and standards
 
 ### Compilers and linters:

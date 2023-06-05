@@ -3,7 +3,7 @@
     "module": "commonjs",
     "target": "es2015",
     "outDir": "./dist",
-    "types": ["cypress", "cypress-grep"],
+    "types": ["cypress"],
     "allowJs": true,
     "checkJs": true,
     "strict": true,

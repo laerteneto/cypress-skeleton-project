@@ -2,7 +2,7 @@ import Application from '../support/pages/application'
 
 const application = new Application()
 
-describe('Login and Logout tests', { tags: ['@smoke'] }, () => {
+describe('Login and Logout tests', () => {
   context('Unsuccessful scenarios', () => {
     it('Unsuccessful Login with wrong password', () => {
       application.loginPage.login(Cypress.env('DEFAULT_USER_AUTH'), 'Test@1234', false)

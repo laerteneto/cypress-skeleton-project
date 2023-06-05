@@ -23,13 +23,9 @@ beforeEach(() => {
 
 // Import commands.js using ES2015 syntax:
 import './commands'
-import 'cypress-plugin-snapshots/commands'
 
 // Plugins
 require('cypress-xpath')
-require('@cypress/skip-test/support')
-require('cypress-grep')()
-import 'cypress-real-events/support'
 
 // Returning false here prevents Cypress from failing the test
 // eslint-disable-next-line no-unused-vars

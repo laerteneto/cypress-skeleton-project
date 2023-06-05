@@ -10,9 +10,6 @@
 // https://on.cypress.io/plugins-guide
 // ***********************************************************
 
-// Plugin snapshot variables:
-const { initPlugin } = require('cypress-plugin-snapshots/plugin')
-
 // Reporter necessary variables
 const { beforeRunHook, afterRunHook } = require('cypress-mochawesome-reporter/lib')
 const exec = require('child_process').execSync
@@ -23,8 +20,6 @@ const exec = require('child_process').execSync
 module.exports = (on, config) => {
   console.log('Initializing module settings')
   console.log('============================')
-
-  require('cypress-grep/src/plugin')(config)
 
   on('before:browser:launch', (launchOptions, browser = {}) => {
     if (browser.family === 'chromium') {
@@ -83,8 +78,6 @@ module.exports = (on, config) => {
     await afterRunHook()
     await exec('yarn jrm ./cypress/test-results/JUnitReport.xml ./cypress/test-results/junit/*.xml')
   })
-
-  initPlugin(on, config)
 
   return config
 }
