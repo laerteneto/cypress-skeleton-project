@@ -1,4 +1,4 @@
-image: cypress/browsers:node16.13.2-chrome100-ff98
+image: cypress/browsers:node-18.16.0-chrome-113.0.5672.92-1-ff-113.0-edge-113.0.1774.35-1
 options:
   max-time: 120
 
@@ -14,7 +14,7 @@ cypressChrome: &cypressChrome
     - node
     - cypress
   script:
-    - yarn cy:run:dashboard --browser chrome --parallel --group Chrome --ci-build-id $BITBUCKET_BUILD_NUMBER
+    - cy:run:chrome
   artifacts:
     - cypress/screenshots/**
     - cypress/videos/**
@@ -28,7 +28,21 @@ cypressFirefox: &cypressFirefox
     - node
     - cypress
   script:
-    - yarn cy:run:dashboard --browser firefox --parallel --group Firefox --ci-build-id $BITBUCKET_BUILD_NUMBER
+    - cy:run:firefox
+  artifacts:
+    - cypress/screenshots/**
+    - cypress/videos/**
+    - cypress/downloads/**
+    - cypress/test-results/**
+
+cypressEdge: &cypressEdge
+  name: E2E tests on Edge
+  caches:
+    - npm
+    - node
+    - cypress
+  script:
+    - cy:run:edge
   artifacts:
     - cypress/screenshots/**
     - cypress/videos/**
@@ -47,40 +61,5 @@ pipelines:
           - yarn
           - yarn compile
           - yarn lint:fix
-          - yarn cy:list:spec:by:names
-          - yarn cy:list:spec:by:tags
     - step:
-        name: Cypress - Chrome browser
-        caches:
-          - npm
-          - cypress
-          - node
-        script:
-          - yarn cy:run:chrome
-        artifacts:
-          - cypress/screenshots/**
-          - cypress/videos/**
-          - cypress/test-results/**
-          - cypress/downloads/**
-
-  branches:
-    cypressDashboard:
-      - step:
-          name: Install dependencies
-          caches:
-            - npm
-            - cypress
-            - node
-          script:
-            - yarn
-            - yarn compile
-            - yarn lint:fix
-            - yarn cy:list:spec:by:names
-            - yarn cy:list:spec:by:tags
-      - parallel:
-          - step:
-              <<: *cypressChrome
-          - step:
-              <<: *cypressChrome
-          - step:
-              <<: *cypressChrome
+        <<: *cypressChrome
