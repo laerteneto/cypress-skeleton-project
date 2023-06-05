@@ -131,11 +131,12 @@ To do that, open a git bash terminal in your Cypress project root folder and typ
 
 > ```bash
 > npx husky install
+> git add .husky/pre-commit
 > ```
 >
 > <br/>
 > By doing it, the compilers will run whenever you commit your code in either VSCode or Git Bash. <br/>
-> The usage of Husky is not mandatory but it is very helpful since you donâ€™t need to type/remember the compiler and linters commands
+> The usage of Husky is not mandatory but it is very helpful since you don't need to type/remember the compiler and linters commands
 > <br/><br/>
 
 > **_NOTE:_** It is a very good practice to never commit your code before running the compilers using scripts provided in this project. They are meant to prevent several issues you may find in your CI environment, so it is a good practice to always run the compilers before pushing new code changes.
